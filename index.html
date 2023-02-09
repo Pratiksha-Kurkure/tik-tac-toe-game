@@ -33,6 +33,7 @@
         <div class="row">
             <div class="col-sm-6 offset-sm-3">
                 <h2 class="text-center mt-5">Tik-tac-toe</h2>
+                <div id="output"></div>
                 <table id="stat" class="d-none mt-5 text-center table table-dark table-striped table-hover ">
                     <thead>
                         <tr>
@@ -92,10 +93,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 offset-sm-3"> 
-            
-        </div>
-        <!-- <button onclick={endGame()}>End</button> -->
     </div>
     <script>
 
@@ -124,7 +121,6 @@
                 document.getElementById("p1name").innerHTML = player1.value
                 document.getElementById("p2name").innerHTML = player2.value
             }
-
         }
         function game(id) {
             let box = document.getElementById(id)
@@ -146,11 +142,8 @@
                 if (document.getElementById(`box${i + 1}`).classList.contains("bg-primary") || document.getElementById(`box${i + 1}`).classList.contains("bg-danger")) {
                     fill.push("hello")
                 }
-
             }
 
-            // console.log(fill);
-            // console.log(redbox);
             let winner = false
             switch (true) {
                 case redbox[0] && redbox[1] && redbox[2]: displayResult('red'); break;
@@ -169,11 +162,7 @@
                 case bluebox[2] && bluebox[5] && bluebox[8]: displayResult('blue'); break;
                 case bluebox[0] && bluebox[4] && bluebox[8]: displayResult('blue'); break;
                 case bluebox[2] && bluebox[4] && bluebox[6]: displayResult('blue'); break;
-
-
-
                 default: (fill.length === 9) && displayResult("draw")
-
                     break;
             }
         }
@@ -185,7 +174,6 @@
             chance = true
         }
         function displayResult(arg) {
-            console.log(player1.value);
             let classes = ""
             let message = ""
             // handle alert classes wincount increment and message to display-start
@@ -197,18 +185,14 @@
                     break;
             }
             // handle alert classes wincount increment and message to display- end
-            console.log(redcount, blueCount, matchdrawcount);
             let total = redcount + blueCount + matchdrawcount
-            console.warn(total);
             // dispaly win count
             document.getElementById("redCount").innerHTML = redcount
             document.getElementById("blueCount").innerHTML = `<td class="bg-red">${blueCount}</td>`
             document.getElementById("drawCount").innerHTML = `<td class="bg-red">${matchdrawcount}</td>`
             document.getElementById("totalCount").innerHTML = `<td class="bg-red">${total}</td>`
             // dispaly win count end
-            console.log("red", (redcount / total) * 100);
-            console.log("blue", (blueCount / total) * 100);
-            console.log("draw", (matchdrawcount / total) * 100);
+
             document.getElementById("redpro").style.width = `${(redcount / total) * 100}%`
             document.getElementById("bluepro").style.width = `${(blueCount / total * 100)}%`
             document.getElementById("drawpro").style.width = `${(matchdrawcount / total * 100)}%`
@@ -228,34 +212,6 @@
 
             }, 2000);
         }
-
-
-
-        // function endGame(id) {
-        //     end = true
-        //     let endtotal = redcount + blueCount + matchdrawcount
-        //     end && stat.classList.add("d-none")
-        //     console.log(redcount,"redcount");
-        //     console.log(endtotal,"total");
-        //     if(endtotal>0){
-        //         if(redcount>blueCount){
-        //             console.log("red is winerrr");
-        //         }else{
-        //             console.log("red is winerrr");
-        //         }
-        //     }
-            
-            
-        //     // matchdrawcount
-            
-        //     // let box = document.getElementById(id)
-        //     // if (!(box.classList.contains("bg-danger") || box.classList.contains("bg-primary"))) {
-        //     //     chance ? box.classList.add("bg-danger")
-        //     //         : box.classList.add("bg-primary")
-        //     //     chance = !chance
-        //     //     checkWinner()
-        //     // }
-        // }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
